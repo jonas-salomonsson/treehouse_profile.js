@@ -1,6 +1,6 @@
 var Profile = require("treehouse_profile");
 
-var studentProfile = new Profile("chalkers");
+var studentProfile = new Profile("@jonas.salomonsson:synapse.cynergit.nu");
 
 /**
  * When the JSON body is fully received the 
