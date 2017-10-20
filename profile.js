@@ -45,6 +45,38 @@ function Profile(username) {
     });
 }
 
-util.inherits( Profile, EventEmitter );
+function Login(username, password) {
+    EventEmitter.call(this);
+    loginEmitter = this;
 
-module.exports = Profile;
+    var request = https.get("https://synapse.cynergit.nu", function(response) {
+        var body = "";
+
+        if (response.statusCode !== 200) {
+            request.abort();
+            loginEmitter.emit("error", new Error("There was an error trying to login. (" + https.STATUS_CODES[response.statusCode] + ")"));
+        }
+
+        response.on('data', function(chunk) {
+            body += chunk;
+            loginEmitter.emit("data", chunk);
+        });
+
+        response.on('end', function () {
+            if(response.statusCode === 200) {
+                try {
+                    var login = JSON.parse(body);
+                    loginEmitter.emit("end", login);
+                } catch (error) {
+                    loginEmitter.emit("error", error);
+                }
+            }
+        }).on("error", function(error) {
+            loginEmitter.emit("error", error);
+        });
+    });
+}
+
+util.inherits( Profile, Login, EventEmitter );
+
+module.exports = Login;
