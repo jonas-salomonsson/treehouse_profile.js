@@ -29,7 +29,7 @@ function Profile(username) {
         });
 
         response.on('end', function () {
-            if(repsonse.statusCode === 200) {
+            if(response.statusCode === 200) {
                 try {
                     // Parse the data
                     var profile = JSON.parse(body);
