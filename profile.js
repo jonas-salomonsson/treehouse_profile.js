@@ -14,7 +14,7 @@ function Profile(username) {
 
     // Connect to the API URL (https://teamtreehouse.com/username.json)
     //var request = https.get("https://teamtreehouse.com/" + username + ".json", function(response) {
-    var request = https.get("https://synapse.cynergit.nu/GET /_matrix/client/r0/profile/" + username, function(response) {
+    var request = https.get("https://synapse.cynergit.nu/GET /_matrix/client/r0/profile/@" + username + ":synapse.cynergit.nu", function(response) {
         var body = "";
         
         if (response.statusCode !== 200) {
