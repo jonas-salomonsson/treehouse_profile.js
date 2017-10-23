@@ -45,6 +45,14 @@ function Profile(username) {
     });
 }
 
+
+/**
+ * An EventEmitter to get a Treehouse students profile.
+ * @param username
+ * @param password
+ * @constructor
+ */
+
 function Login(username, password) {
     EventEmitter.call(this);
     loginEmitter = this;
