@@ -24,12 +24,12 @@ function Profile(username) {
         }
 
         // Read the data
-        response.on('data', function (chunk) {
+        response.on('data', function(chunk) {
             body += chunk;
             profileEmitter.emit("data", chunk);
         });
 
-        response.on('end', function () {
+        response.on('end', function() {
             if(response.statusCode === 200) {
                 try {
                     // Parse the data
@@ -70,7 +70,7 @@ function Login(username, password) {
             loginEmitter.emit("data", chunk);
         });
 
-        response.on('end', function () {
+        response.on('end', function() {
             if(response.statusCode === 200) {
                 try {
                     var login = body;//JSON.parse(body);
