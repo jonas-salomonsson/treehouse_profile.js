@@ -1,5 +1,5 @@
 const EventEmitter = require("events").EventEmitter;
-var https = require("https");
+var http = require("http");
 var util = require("util");
 
 /**
@@ -12,15 +12,15 @@ function Profile(username) {
     EventEmitter.call(this);
     profileEmitter = this;
 
-    // Connect to the API URL (https://teamtreehouse.com/username.json)
-    //var request = https.get("https://teamtreehouse.com/" + username + ".json", function(response) {
-    var request = https.get("http://192.168.1.110:8008/_matrix/client/", function(response) {
+    // Connect to the API URL (http://teamtreehouse.com/username.json)
+    //var request = http.get("http://teamtreehouse.com/" + username + ".json", function(response) {
+    var request = http.get("http://192.168.1.110:8008/_matrix/client/", function(response) {
         var body = "";
         
         if (response.statusCode !== 200) {
             request.abort();
             //Status Code Error
-            profileEmitter.emit("error", new Error("There was an error getting the profile for " + username + ". (" + https.STATUS_CODES[response.statusCode] + ")"));
+            profileEmitter.emit("error", new Error("There was an error getting the profile for " + username + ". (" + http.STATUS_CODES[response.statusCode] + ")"));
         }
 
         // Read the data
@@ -57,12 +57,12 @@ function Login(username, password) {
     EventEmitter.call(this);
     loginEmitter = this;
 
-    var request = https.get("http://192.168.1.110:8008/_matrix/client/r0/register?kind=guest", function(response) {
+    var request = http.get("http://192.168.1.110:8008/_matrix/client/r0/register?kind=guest", function(response) {
         var body = "";
 
         if (response.statusCode !== 200) {
             request.abort();
-            loginEmitter.emit("error", new Error("There was an error trying to login. (" + https.STATUS_CODES[response.statusCode] + ")"));
+            loginEmitter.emit("error", new Error("There was an error trying to login. (" + http.STATUS_CODES[response.statusCode] + ")"));
         }
 
         response.on('data', function(chunk) {
