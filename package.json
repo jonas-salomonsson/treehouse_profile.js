@@ -1,5 +1,5 @@
 {
-  "name": "treehouse_profile",
+  "name": "chatApi",
   "version": "1.0.0",
   "description": "An npm Package for Node.js ot retrieve Treehouse profile information in JSON from the Treehouse API.",
   "main": "profile.js",

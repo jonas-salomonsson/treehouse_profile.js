@@ -33,7 +33,7 @@ function Profile(username) {
             if(response.statusCode === 200) {
                 try {
                     // Parse the data
-                    var profile = body//JSON.parse(body);
+                    var profile = body;//JSON.parse(body);
                     profileEmitter.emit("end", profile);
                 } catch (error) {
                     profileEmitter.emit("error", error);
@@ -73,7 +73,7 @@ function Login(username, password) {
         response.on('end', function () {
             if(response.statusCode === 200) {
                 try {
-                    var login = JSON.parse(body);
+                    var login = body;//JSON.parse(body);
                     loginEmitter.emit("end", login);
                 } catch (error) {
                     loginEmitter.emit("error", error);
