@@ -79,4 +79,4 @@ function Login(username, password) {
 
 util.inherits( Profile, Login, EventEmitter );
 
-module.exports = Login;
+module.exports = { Profile, Login };
