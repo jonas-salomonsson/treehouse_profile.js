@@ -2,7 +2,7 @@
 var Login = require("treehouse_profile");
 
 //var studentProfile = new Profile("jonas.salomonsson");
-var loginProfile = new Login("{'username': 'jonas.salomonsson', 'password': 'hejsan'}");
+var loginProfile = new Login("jonas.salomonsson", "hejsan");
 loginProfile.on("end", console.dir);
 loginProfile.on("error", console.error);
 
