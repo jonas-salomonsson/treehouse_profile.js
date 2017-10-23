@@ -1,4 +1,4 @@
-var EventEmitter = require("events").EventEmitter;
+const EventEmitter = require("events").EventEmitter;
 var https = require("https");
 var util = require("util");
 
@@ -14,7 +14,7 @@ function Profile(username) {
 
     // Connect to the API URL (https://teamtreehouse.com/username.json)
     //var request = https.get("https://teamtreehouse.com/" + username + ".json", function(response) {
-    var request = https.get("https://synapse.cynergit.nu/_matrix/client/r0/profile/@" + username + ":synapse.cynergit.nu", function(response) {
+    var request = https.get("http://192.168.1.110:8008/_matrix/client/", function(response) {
         var body = "";
         
         if (response.statusCode !== 200) {
@@ -33,7 +33,7 @@ function Profile(username) {
             if(response.statusCode === 200) {
                 try {
                     // Parse the data
-                    var profile = JSON.parse(body);
+                    var profile = body//JSON.parse(body);
                     profileEmitter.emit("end", profile);
                 } catch (error) {
                     profileEmitter.emit("error", error);
@@ -57,7 +57,7 @@ function Login(username, password) {
     EventEmitter.call(this);
     loginEmitter = this;
 
-    var request = https.get("https://synapse.cynergit.nu", function(response) {
+    var request = https.get("http://192.168.1.110:8008/_matrix/client/r0/register?kind=guest", function(response) {
         var body = "";
 
         if (response.statusCode !== 200) {
