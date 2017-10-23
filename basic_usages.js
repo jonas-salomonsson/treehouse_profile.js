@@ -1,8 +1,8 @@
 //var Profile = require("treehouse_profile");
-var Login = require("treehouse_profile");
+var api = require("treehouse_profile");
 
-//var studentProfile = new Profile("jonas.salomonsson");
-var loginProfile = new Login("jonas.salomonsson", "hejsan");
+var studentProfile = new api.Profile("jonas.salomonsson");
+var loginProfile = new api.Login("jonas.salomonsson", "hejsan");
 loginProfile.on("end", console.dir);
 loginProfile.on("error", console.error);
 
@@ -11,10 +11,10 @@ loginProfile.on("error", console.error);
  * "end" event is triggered and the full body
  * is given to the handler or callback
  **/
-//studentProfile.on("end", console.dir);
+studentProfile.on("end", console.dir);
 
 /**
  * If a parsing, network or HTTP error occurs an
  * error object is passed in to the handler or callback
  **/
-//studentProfile.on("error", console.error);
+studentProfile.on("error", console.error);
